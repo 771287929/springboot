@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8"/>
-    <title></title>
+<meta charset="utf-8" />
+<title>profile</title>
 </head>
 <body>
-Hello
+	<div>
+	ModleAndView:
+		<span th:text="${user.username}+',welcome!'"></span> <span
+			th:text="${message}">静态消息</span>
+
+		<table th:remove="all-but-first">
+			<!-- 将后台传出的 productList 的集合进行迭代，用product参数接收，通过product访问属性值 -->
+			<tr th:each="product:${productList}">
+				<!-- 用count进行统计，有顺序的显示 -->
+				<td th:text="${productStat.count}">1</td>
+				<td th:text="${product.description}">Red Chair</td>
+				<td th:text="${'$' + #numbers.formatDecimal(product.price, 1, 2)}">$123</td>
+				<td th:text="${#dates.format(product.availableFrom, 'yyyy-MM-dd')}">2014-12-01</td>
+			</tr>
+			<tr>
+				<td>White table</td>
+				<td>$200</td>
+				<td>15-Jul-2013</td>
+			</tr>
+			<tr>
+				<td>Reb table</td>
+				<td>$200</td>
+				<td>15-Jul-2013</td>
+			</tr>
+			<tr>
+				<td>Blue table</td>
+				<td>$200</td>
+				<td>15-Jul-2013</td>
+			</tr>
+		</table>
+		
+	json:
+		
+	</div>
 </body>
 </html>
