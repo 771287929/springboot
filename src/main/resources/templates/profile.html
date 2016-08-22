@@ -8,8 +8,7 @@
 </head>
 <body>
 	<div>
-	ModleAndView:
-		<span th:text="${user.username}+',welcome!'"></span> <span
+		ModleAndView: <span th:text="${user.username}+',welcome!'"></span> <span
 			th:text="${message}">静态消息</span>
 
 		<table th:remove="all-but-first">
@@ -37,9 +36,30 @@
 				<td>15-Jul-2013</td>
 			</tr>
 		</table>
+
+		json:
 		
-	json:
+		<table></table>
 		
+		<script type="text/javascript" th:src="@{/js/jquery-1.11.1.min.js}"></script>
+		<script
+			src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+			th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+		<script th:inline="javascript">
+			$(function() {
+				$.ajax({
+					url : "/profile/ajax",
+					type : "get",
+					dataType : "json",
+					success : function(data) {
+						 $.each(data,function(idx,item){    
+							   //输出
+							   alert(item.description+" 价格"+item.price);
+							})
+					}
+				});
+			});
+		</script>
 	</div>
 </body>
 </html>

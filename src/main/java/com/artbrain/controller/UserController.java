@@ -75,7 +75,7 @@ public class UserController {
   }
   
   
-  @RequestMapping("/profileJson")
+  @RequestMapping("/profile/ajax")
   @ResponseBody
   public List<Product> findProduct() throws ParseException{
 	  
